@@ -7,6 +7,7 @@ const cheerio = require ("cheerio");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+const db = require("./models");
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.Promise = Promise;
@@ -17,6 +18,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+require("./routes/routes.js")(app);
 
 app.listen(PORT, function() {
     console.log(`App running on port ${PORT}!`);
