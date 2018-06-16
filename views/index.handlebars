@@ -1,12 +1,15 @@
-<h1>In The Know</h1>
-<h2>Your Main source of Nerdy News</h2>
+<div class="container">
+    <h1>In The Know</h1>
+    
+    <h2>Your Main source of Nerdy News</h2>
 
-<div id="articles">
-    {{#each Articles}}
-        <div id="{{_id}}">
-            <p>{{title}}</p>
-            <a href={{link}}>{{link}}</a>
-            <a href="/articles/{{_id}}"><button>Notes</button></a>
-        </div>
-    {{/each}}
+    <div id="articles">
+        {{#each Articles}}
+            <div id="{{_id}}">
+                <p>{{title}}</p>
+                <a href={{link}}>{{link}}</a>
+                <a href="/articles/{{_id}}"><button>Notes</button></a>
+            </div>
+        {{/each}}
+    </div>
 </div>

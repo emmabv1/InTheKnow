@@ -26,11 +26,11 @@ module.exports = (app) => {
                 });
             });
 
-            res.send("Scrape Complete");
+            res.redirect("/");
         });
     });
 
-    app.get("/articles", function(req, res) {
+    app.get("/", function(req, res) {
         db.Articles.find({})
             .then(function(dbArticle) {
             res.render("index", {Articles: dbArticle});
