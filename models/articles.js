@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const ArticleSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: false
   },
   link: {
     type: String,
-    required: true
+    required: false
   },
   note: {
     type: Schema.Types.ObjectId,
@@ -16,6 +16,6 @@ const ArticleSchema = new Schema({
   }
 });
 
-var Article = mongoose.model("Articles", ArticleSchema);
+var Articles = mongoose.model("Articles", ArticleSchema);
 
-module.exports = Article;
+module.exports = Articles;
