@@ -30,9 +30,6 @@ module.exports = (app) => {
         });
     });
 
-  
-
-
     app.get("/articles", function(req, res) {
         db.Articles.find({})
             .then(function(dbArticle) {
@@ -47,7 +44,7 @@ module.exports = (app) => {
         db.Articles.findOne({_id: req.params.id})
             .populate("Notes")
             .then(function(dbArticle) {
-            res.json(dbArticle);
+            res.render("notes", {Notes: dbArticle});
             })
             .catch(function(err) {
             res.json(err);
@@ -57,14 +54,13 @@ module.exports = (app) => {
     app.post("/articles/:id", function(req, res) {
         db.Notes.create(req.body)
             .then(function(dbNote) {
-                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+            return db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true});
             })
             .then(function(dbArticle) {
-            res.json(dbArticle);
+            res.redirect("/articles/" + req.params.id);
             })
             .catch(function(err) {
             res.json(err);
         });
     });
-
 };
