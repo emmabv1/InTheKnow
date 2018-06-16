@@ -1,0 +1,28 @@
+
+    <h1>{{Notes.title}}</h1>
+    <h2>Notes</h2>
+   
+    <div id="notes">
+        {{#each Notes.Notes}}
+            <div id="{{_id}}">
+                <h2>{{title}}</h2>
+                <p>{{body}}</p>
+            </div>
+        {{/each}}
+    </div>
+
+<h2>Create New Account:</h2>
+<form action="/users/{{user.id}}/accounts/new" method="POST">
+  Checking: <input name="type" type="radio" value="checking" />
+  <br />
+  Savings: <input name="type" type="radio" value="savings" />
+  <br />
+  <input type="submit" />
+</form>
+
+<h2>{{user.name}}</h2>
+{{#each user.Accounts}}
+  <p>
+    <a href="/accounts/{{id}}">{{type}}</a>: ${{balance}}.00
+  </p>
+{{/each}}

@@ -17,7 +17,7 @@ module.exports = (app) => {
                 result.link = $(this)
                 .attr("href");
   
-                db.Articles.create(result)
+                db.Articles.insertMany(result)
                 .then(function(dbArticle) {
                     console.log(dbArticle);
                 })
